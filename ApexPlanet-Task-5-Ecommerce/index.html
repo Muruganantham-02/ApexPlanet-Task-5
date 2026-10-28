@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A responsive demo shopping website built with HTML, CSS and JavaScript.">
+  <meta name="theme-color" content="#14213d">
+  <title>ShopEase | Everyday Shopping</title>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="stylesheet" href="style.min.css">
+  <script src="script.min.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#" aria-label="ShopEase home"><span class="brand-mark">S</span> ShopEase</a>
+      <form class="search-form" id="search-form" role="search">
+        <label class="sr-only" for="search-input">Search products</label>
+        <input id="search-input" type="search" placeholder="Search products..." autocomplete="off">
+        <button type="submit" aria-label="Search">⌕</button>
+      </form>
+      <button class="cart-button" id="cart-toggle" type="button" aria-label="Open shopping cart">
+        <span aria-hidden="true">🛒</span> Cart <span class="cart-count" id="cart-count">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container hero-content">
+        <p class="eyebrow">THE EVERYDAY EDIT</p>
+        <h1>Good finds.<br><span>Better living.</span></h1>
+        <p>Useful essentials, thoughtful design, and little upgrades for your everyday life.</p>
+        <a class="button button-light" href="#shop">Explore products <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="hero-decoration" aria-hidden="true"><span>SHOP</span><span>SMART</span></div>
+    </section>
+
+    <section class="benefits container" aria-label="Store benefits">
+      <div><span aria-hidden="true">↗</span><p><strong>Free shipping</strong><small>On orders over ₹1,499</small></p></div>
+      <div><span aria-hidden="true">◇</span><p><strong>Quality picks</strong><small>Chosen for everyday use</small></p></div>
+      <div><span aria-hidden="true">↺</span><p><strong>Easy returns</strong><small>Within 7 days (demo)</small></p></div>
+    </section>
+
+    <section class="shop-section container" id="shop">
+      <div class="section-heading">
+        <div><p class="eyebrow">OUR COLLECTION</p><h2>Shop the essentials</h2></div>
+        <p class="results-label" id="results-label" aria-live="polite">Loading products…</p>
+      </div>
+
+      <div class="shop-layout">
+        <aside class="filters" aria-label="Product filters">
+          <div class="filter-heading"><h3>Filters</h3><button id="reset-filters" class="text-button" type="button">Reset</button></div>
+          <label for="category-filter">Category</label>
+          <select id="category-filter">
+            <option value="all">All categories</option>
+            <option value="Home">Home</option>
+            <option value="Tech">Tech</option>
+            <option value="Accessories">Accessories</option>
+            <option value="Lifestyle">Lifestyle</option>
+          </select>
+          <label for="max-price">Maximum price <span id="price-value">₹5,000</span></label>
+          <input id="max-price" type="range" min="200" max="5000" step="100" value="5000">
+          <label for="sort-select">Sort products</label>
+          <select id="sort-select">
+            <option value="featured">Featured</option>
+            <option value="price-low">Price: low to high</option>
+            <option value="price-high">Price: high to low</option>
+            <option value="rating">Top rated</option>
+          </select>
+          <div class="filter-note"><span aria-hidden="true">✦</span><p>Small upgrades can make a big difference. Find your next favourite.</p></div>
+        </aside>
+
+        <div class="product-area">
+          <div class="active-filters" id="active-filters"></div>
+          <div class="product-grid" id="product-grid" aria-live="polite"></div>
+          <div class="empty-state" id="empty-state" hidden>
+            <span aria-hidden="true">⌕</span><h3>No products found</h3><p>Try another search or reset your filters.</p>
+            <button class="button button-dark" id="empty-reset" type="button">Reset filters</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="overlay" id="overlay" hidden></div>
+  <aside class="cart-drawer" id="cart-drawer" aria-labelledby="cart-title" aria-hidden="true">
+    <div class="cart-header"><div><p class="eyebrow">YOUR SELECTION</p><h2 id="cart-title">Shopping cart</h2></div><button id="cart-close" class="icon-button" type="button" aria-label="Close cart">×</button></div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-empty" id="cart-empty"><span aria-hidden="true">🛍️</span><h3>Your cart is empty</h3><p>Discover something you love.</p></div>
+    <div class="cart-footer">
+      <div class="subtotal"><span>Subtotal</span><strong id="cart-subtotal">₹0</strong></div>
+      <p class="demo-note">Demo project only — checkout and payments are not connected.</p>
+      <button class="button button-dark checkout-button" id="checkout-button" type="button">Continue to checkout</button>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="brand brand-footer" href="#"><span class="brand-mark">S</span> ShopEase</a>
+      <p>A student capstone project built with HTML, CSS & JavaScript.</p>
+      <p>© <span id="year"></span> ShopEase · Demo store</p>
+    </div>
+  </footer>
+</body>
+</html>
